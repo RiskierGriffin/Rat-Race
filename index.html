@@ -67,11 +67,13 @@
 
 				lapWinner = "";
 				raceMessage = "Let the race begin!";
+				finalWinner = "";
+
 				mickeyOut = document.getElementById("mickeyspan");
 				itchyOut = document.getElementById("itchyspan");
 				jerryOut = document.getElementById("jerryspan");
 				lapOut = document.getElementById("laps");
-				gameMessageOut = document.getElementById("gameMessage");
+				raceMessageOut = document.getElementById("race_message");
 
 				showRats();
 			}
@@ -87,40 +89,37 @@
 					mickeyTotalDistance = mickeyTotalDistance + mickeyDistance;
 					itchyTotalDistance = itchyTotalDistance + itchyDistance;
 					lapCount = lapCount + 1;
-
+					determineWinner();
 					showRats();
 				}
 				else {
 
 				}
 			}
-
-
-
-			/*
-					Generates a random integer between a lower and an upper bound, inclusive.
-
-					Parameters
-						lower - the lowest number that could be chosen.
-						upper - the highest number that could be chosen.
-				*/
-
-			/*
-				showRats
-
-				Handles all of the display for the program, including each mouse's "distance" and any messages that appear on screen.
-			*/
 			function determineWinner() {
-				/*if (mickeyTotalDistance > itchyTotalDistance && mickeyTotalDistance > jerryTotalDistance) {
-					continue;
-				}
-				else if (itchyTotalDistance > mickeyTotalDistance && itchyTotalDistance > jerryTotalDistance) {
-					continue;
-				}
-				else if (jerryTotalDistance > itchyTotalDistance && jerryTotalDistance > mickeyTotalDistance {
-					continue;
-				}
-				*/
+					if(lapCount < 10){
+						if (mickeyTotalDistance > itchyTotalDistance && mickeyTotalDistance > jerryTotalDistance) {
+							raceMessage = "Mickey is winning";
+						}
+						else if (itchyTotalDistance > mickeyTotalDistance && itchyTotalDistance > jerryTotalDistance) {
+							raceMessage = "Itchy is winning";
+						}
+						else if (jerryTotalDistance > itchyTotalDistance && jerryTotalDistance > mickeyTotalDistance) {
+							raceMessage = "Jerry is winning";
+						}
+					}
+					else{
+						if(raceMessage == "Mickey is winning"){
+							finalWinner = "Mickey has won!";
+						}
+						else if (raceMessage == "Itchy is winning"){
+							finalWinner = "Itchy has won!";
+						}
+						else if (raceMessage == "Jerry is winning"){
+							finalWinner = "Jerry has won!";
+						}
+						raceMessage = finalWinner;
+					}
 			}
 
 			function showRats() {
@@ -128,6 +127,7 @@
 				itchyOut.innerHTML = itchyTotalDistance;
 				jerryOut.innerHTML = jerryTotalDistance;
 				lapOut.innerHTML = lapCount;
+				raceMessageOut.innerHTML = raceMessage;
 			}
 		</script>
 		<script src="Utilities.js"></script>
@@ -138,7 +138,7 @@
 			Gentlemen, start your mouses.
 		</p>
 
-		<p id="gameMessage">
+		<p id="race_message">
 			Race has not begun
 		</p>
 
