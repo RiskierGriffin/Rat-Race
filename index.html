@@ -64,6 +64,7 @@
 				itchyTotalDistance = 0;
 				jerryTotalDistance = 0;
 				lapCount = 0;
+				lapCountString ="";
 
 				lapWinner = "";
 				raceMessage = "Let the race begin!";
@@ -74,6 +75,7 @@
 				jerryOut = document.getElementById("jerryspan");
 				lapOut = document.getElementById("laps");
 				raceMessageOut = document.getElementById("race_message");
+				lapCountOut = document.getElementById("lap_number");
 
 				showRats();
 			}
@@ -90,6 +92,7 @@
 					itchyTotalDistance = itchyTotalDistance + itchyDistance;
 					lapCount = lapCount + 1;
 					determineWinner();
+					lapUpdate();
 					showRats();
 				}
 				else {
@@ -128,19 +131,28 @@
 				jerryOut.innerHTML = jerryTotalDistance;
 				lapOut.innerHTML = lapCount;
 				raceMessageOut.innerHTML = raceMessage;
+				lapCountOut.innerHTML = lapCountString;
+			}
+
+			function lapUpdate(){
+				lapCountString = "";
+				lapCountString = String(lapCount);
+				lapCountString = lapCountString + getOrdinalSuffix(lapCount);
 			}
 		</script>
 		<script src="Utilities.js"></script>
 	</head>
 
 	<body onload="initialize();">
-		<p id="laps">
-			Gentlemen, start your mouses.
-		</p>
+		<div id="gameMessages">
+			<p id="laps">
+				Gentlemen, start your mouses.
+			</p>
 
-		<p id="race_message">
-			Race has not begun
-		</p>
+			<p >
+				After the <span id="lap_number">0th</span> lap,<span id="winner">no one</span> is in the lead
+			</p>
+		</div>
 
 		<h1>
 				<img src = "images/mickey.png" /><br />
