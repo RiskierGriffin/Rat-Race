@@ -52,22 +52,21 @@
 
 		<link rel="stylesheet" href="ratrace.css"/>
 
-		<style></style>
+		<style>
+		</style>
 
 		<script>
 			function initialize() {
 				mickeyDistance = 0;
 				itchyDistance = 0;
 				jerryDistance = 0;
-
 				mickeyTotalDistance = 0;
 				itchyTotalDistance = 0;
 				jerryTotalDistance = 0;
 				lapCount = 0;
-				lapCountString ="";
 
+				lapCountString ="0th";
 				lapWinner = "";
-				raceMessage = "Let the race begin!";
 				finalWinner = "";
 
 				mickeyOut = document.getElementById("mickeyspan");
@@ -75,12 +74,10 @@
 				jerryOut = document.getElementById("jerryspan");
 				lapOut = document.getElementById("laps");
 				raceMessageOut = document.getElementById("race_message");
-				lapCountOut = document.getElementById("lap_number");
+				lapCountStringOut = document.getElementById("lap_number");
 
 				showRats();
 			}
-
-
 
 			function runLap() {
 				if (lapCount < 10) {
@@ -94,9 +91,6 @@
 					determineWinner();
 					lapUpdate();
 					showRats();
-				}
-				else {
-
 				}
 			}
 			function determineWinner() {
@@ -129,13 +123,11 @@
 				mickeyOut.innerHTML = mickeyTotalDistance;
 				itchyOut.innerHTML = itchyTotalDistance;
 				jerryOut.innerHTML = jerryTotalDistance;
-				lapOut.innerHTML = lapCount;
+				lapCountStringOut.innerHTML = lapCountString;
 				raceMessageOut.innerHTML = raceMessage;
-				lapCountOut.innerHTML = lapCountString;
 			}
 
 			function lapUpdate(){
-				lapCountString = "";
 				lapCountString = String(lapCount);
 				lapCountString = lapCountString + getOrdinalSuffix(lapCount);
 			}
@@ -145,12 +137,8 @@
 
 	<body onload="initialize();">
 		<div id="gameMessages">
-			<p id="laps">
-				Gentlemen, start your mouses.
-			</p>
-
-			<p >
-				After the <span id="lap_number">0th</span> lap,<span id="winner">no one</span> is in the lead
+			<p>
+				After the <span id="lap_number">0th</span> lap,<span id="race_message">no one is in the lead</span>
 			</p>
 		</div>
 

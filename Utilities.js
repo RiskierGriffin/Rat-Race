@@ -15,7 +15,8 @@ function getOrdinalSuffix(number){
 	}
 	if(mod10 == 3 && mod100 != 13){
 		return "rd";
-	} else{
+	}
+	else{
 		return "th";
 	}
 }
